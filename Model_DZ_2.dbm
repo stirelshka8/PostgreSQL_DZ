@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+CAUTION: Do not modify this file unless you know what you are doing.
+         Unexpected results may occur if the code is changed deliberately.
+-->
+<dbmodel pgmodeler-ver="0.9.2" last-position="0,0" last-zoom="0.9" max-obj-count="9"
+	 default-schema="public" default-owner="postgres">
+<database name="new_database" is-template="false" allow-conns="true">
+</database>
+
+<schema name="public" layer="0" fill-color="#e1e1e1" sql-disabled="true">
+</schema>
+
+<table name="Track_list" layer="0" collapse-mode="2" pagination="true" attribs-page="0" ext-attribs-page="0" max-obj-count="3">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="241" y="22"/>
+	<column name="track_list_id" not-null="true">
+		<type name="int4" length="0"/>
+	</column>
+	<column name="track">
+		<type name="text" length="0"/>
+	</column>
+	<column name="collection">
+		<type name="text" length="0"/>
+	</column>
+	<constraint name="Track_list_pk" type="pk-constr" table="public.&quot;Track_list&quot;">
+		<columns names="track_list_id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="Collection_track_list" layer="0" collapse-mode="2" max-obj-count="4">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="11.8889" y="380.889"/>
+	<column name="collection_track_list_id" not-null="true">
+		<type name="int4" length="0"/>
+	</column>
+	<column name="Track">
+		<type name="text" length="0"/>
+	</column>
+	<column name="Year_issue">
+		<type name="int4" length="0"/>
+	</column>
+	<constraint name="Collection_track_list_pk" type="pk-constr" table="public.&quot;Collection_track_list&quot;">
+		<columns names="collection_track_list_id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="Track" layer="0" collapse-mode="2" max-obj-count="6">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="364.111" y="382"/>
+	<column name="track_id" not-null="true">
+		<type name="int4" length="0"/>
+	</column>
+	<column name="track_name">
+		<type name="text" length="0"/>
+	</column>
+	<column name="albun_id">
+		<type name="text" length="0"/>
+	</column>
+	<column name="duration">
+		<type name="text" length="0"/>
+	</column>
+	<constraint name="Track_pk" type="pk-constr" table="public.&quot;Track&quot;">
+		<columns names="track_id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="albums" layer="0" collapse-mode="2" max-obj-count="6">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="772.111" y="21.1111"/>
+	<column name="album_id" not-null="true">
+		<type name="int4" length="0"/>
+	</column>
+	<column name="Name">
+		<type name="text" length="0"/>
+	</column>
+	<column name="Year">
+		<type name="int4" length="0"/>
+	</column>
+	<constraint name="albums_pk" type="pk-constr" table="public.albums">
+		<columns names="album_id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="artist_album" layer="0" collapse-mode="2" max-obj-count="3">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="695.778" y="385.667"/>
+	<column name="artist_album_id" not-null="true">
+		<type name="int4" length="0"/>
+	</column>
+	<column name="Artist">
+		<type name="text" length="0"/>
+	</column>
+	<column name="Album">
+		<type name="text" length="0"/>
+	</column>
+	<constraint name="artist_album_pk" type="pk-constr" table="public.artist_album">
+		<columns names="artist_album_id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="Artist" layer="0" collapse-mode="2" max-obj-count="6">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1177.22" y="30"/>
+	<column name="artist_id" not-null="true">
+		<type name="int4" length="0"/>
+	</column>
+	<column name="Name">
+		<type name="text" length="0"/>
+	</column>
+	<constraint name="Artist_pk" type="pk-constr" table="public.&quot;Artist&quot;">
+		<columns names="artist_id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="Artist_genre" layer="0" collapse-mode="2" max-obj-count="3">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1587.22" y="383.889"/>
+	<column name="artist_genre_id" not-null="true">
+		<type name="int4" length="0"/>
+	</column>
+	<column name="artist">
+		<type name="text" length="0"/>
+	</column>
+	<column name="genre">
+		<type name="text" length="0"/>
+	</column>
+	<constraint name="Artist_genre_pk" type="pk-constr" table="public.&quot;Artist_genre&quot;">
+		<columns names="artist_genre_id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="Genre" layer="0" collapse-mode="2" max-obj-count="3">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1037.78" y="377.222"/>
+	<column name="genre_id" not-null="true">
+		<type name="int4" length="0"/>
+	</column>
+	<column name="name">
+		<type name="text" length="0"/>
+	</column>
+	<constraint name="Genre_pk" type="pk-constr" table="public.&quot;Genre&quot;">
+		<columns names="genre_id" ref-type="src-columns"/>
+	</constraint>
+
+	<customidxs object-type="column">
+		<object name="artist_genre_id_Artist_genre" index="2"/>
+	</customidxs>
+
+	<customidxs object-type="constraint">
+		<object name="Artist_genre_fk" index="1"/>
+		<object name="Genre_uq" index="2"/>
+	</customidxs>
+</table>
+
+<relationship name="Collection_track_list_has_one_Track_list" type="rel11" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#eca810"
+	 src-table="public.&quot;Track_list&quot;"
+	 dst-table="public.&quot;Collection_track_list&quot;"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="Track_has_one_Track_list" type="rel11" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#24ea95"
+	 src-table="public.&quot;Track_list&quot;"
+	 dst-table="public.&quot;Track&quot;"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="albums_has_one_Track" type="rel11" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#bd30f6"
+	 src-table="public.&quot;Track&quot;"
+	 dst-table="public.albums"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="albums_has_one_artist_album" type="rel11" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#d30fe2"
+	 src-table="public.artist_album"
+	 dst-table="public.albums"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="Artist_has_one_artist_album" type="rel11" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#94d4b3"
+	 src-table="public.artist_album"
+	 dst-table="public.&quot;Artist&quot;"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="Artist_has_one_Artist_genre" type="rel11" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#015c1f"
+	 src-table="public.&quot;Artist_genre&quot;"
+	 dst-table="public.&quot;Artist&quot;"
+	 src-required="false" dst-required="false">
+	<label ref-type="name-label">
+		<position x="129.576" y="-14.3857"/>
+	</label>
+</relationship>
+
+<relationship name="Genre_has_one_Artist_genre" type="rel11" layer="0"
+	 src-col-pattern="{sc}_{st}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 custom-color="#d67ea7"
+	 src-table="public.&quot;Artist_genre&quot;"
+	 dst-table="public.&quot;Genre&quot;"
+	 src-required="false" dst-required="false"/>
+
+</dbmodel>
